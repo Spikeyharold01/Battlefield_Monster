@@ -1,0 +1,94 @@
+{
+	"monster_name": "Taer",
+	"cr": 2,
+	"xp": 600,
+	"race": "None",
+	"character_class": "None",
+	"lvl": 1,
+	"alignment": "Neutral",
+	"creature_size": "Medium",
+	"creature_type": "Monstrous_Humanoid",
+	"init_mod": 2,
+	"senses": {
+		"darkvision": 60,
+		"scent": 0
+	},
+	"perception_bonus": 9,
+	"auras": {
+		"stench": {
+			"distance": 30,
+			"shape": "SPHERE",
+			"dc": 13,
+			"duration": 10
+		}
+	},
+	"ac_total": 17,
+	"ac_touch": 12,
+	"ac_flatfooted": 15,
+	"ac_modifiers": {
+		"Armor": 0,
+		"Dex": 2,
+		"Dodge": 0,
+		"Natural": 5
+	},
+	"hp": 25,
+	"hp_dice": "3d10+6",
+	"fort_save": 3,
+	"ref_save": 5,
+	"will_save": 4,
+	"hp_abilities": [],
+	"immune": ["Cold"],
+	"weakness_abilities": ["Vulnerable Fire"],
+	"defensive_abilities": [],
+	"speed": {
+		"Walk": 50
+	},
+	"melee": [
+		"2 Slams 6 (1d4+3)",
+		"1 Bite 6 (1d4+3)"
+	],
+	"ranged": [
+		"1 Shortspear 5 (1d6+3)"
+	],
+	"creatures_space": 5,
+	"creatures_reach": 5,
+	"individual_attacks": [],
+	"special_attacks": [],
+	"strength": 16,
+	"dexterity": 15,
+	"constuition": 15,
+	"intelligence": 6,
+	"wisdom": 12,
+	"charisma": 6,
+	"base_atk": 3,
+	"cmb": 6,
+	"cmd": 18,
+	"special_qualities": [],
+	"special_abilities": {},
+	"initiative_abilities": [],
+	"spell_like_abilities": false,
+	"spell_like_abilities_list": [],
+	"languages": ["Taer"],
+	"archdevil_traits": false,
+	"demonlord_traits": false,
+	"empyreallord_traits": false,
+	"formian_traits": false,
+	"horseman_traits": false,
+	"qlippothlord_traits": false,
+	"spells": [],
+	"feats": [
+		"Skill Focus (Perception)",
+		"Toughness"
+	],
+	"skills": {
+		"Climb": 8,
+		"Perception": 9,
+		"Stealth": 6
+	},
+	"enviroment": ["Cold Mountains"],
+	"organisation": {
+		"Minimum": 1,
+		"Maximum": 40
+	},
+	"depth": 0
+}

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjmbm0rjfws4m"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_pnsit"]
+[ext_resource type="Script" path="res://scripts/monsters/monster.gd" id="2_kt4vt"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_pnsit")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="Monster" type="Node3D" parent="."]
+script = ExtResource("2_kt4vt")

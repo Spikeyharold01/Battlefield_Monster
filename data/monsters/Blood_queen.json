@@ -1,0 +1,108 @@
+{
+	"monster_name": "Blood Queen",
+	"cr": 23,
+	"xp": 819200,
+	"race": "None",
+	"character_class": "None",
+	"lvl": 1,
+	"alignment": "Chaotic_Evil",
+	"creature_size": "Gargantuan",
+	"creature_type": "Outsider",
+	"init_mod": 4,
+	"senses": {
+		"blindsight": 120.0
+	},
+	"perception_bonus": 39,
+	"ac_total": 38,
+	"ac_touch": 6,
+	"ac_flatfooted": 38,
+	"ac_modifiers": {
+		"Natural": 32,
+		"Size": -4
+	},
+	"hp": 471,
+	"hp_dice": "23d10+345",
+	"fort_save": 28,
+	"ref_save": 9,
+	"will_save": 24,
+	"speed": {
+		"Walk": 10
+	},
+	"melee": [
+		"1 Bite 29 (2d6+10)",
+		"5 Stings 29 (2d6+10/19-20 plus 2d6 electricity)",
+		"6 tentacles 24 (2d8+5/19-20 plus grab)"
+	],
+	"creatures_space": 20.0,
+	"creatures_reach": 20.0,
+	"special_attacks": [
+		"Horrifying Bellow",
+		"Swallow Whole",
+		"Unholy Gestation"
+	],
+	"spell_like_abilities": true,
+	"spell_like_abilities_list": [
+		"5,Cacophonous Call,25,23",
+		"5,Deeper Darkness,28,23",
+		"5,Dispel Good,28,23",
+		"3,Greater Command,28,23",
+		"1,Mass Suffocation,32,23"
+	],
+	"spells": [],
+	"strength": 30,
+	"dexterity": 11,
+	"constuition": 40,
+	"intelligence": 20,
+	"wisdom": 29,
+	"charisma": 37,
+	"base_atk": 23,
+	"cmb": 37,
+	"cmd": 47,
+	"feats": [
+		"Alertness",
+		"Awesome Blow",
+		"Bleeding Critical",
+		"Critical Focus",
+		"Improved Bull Rush",
+		"Improved Critical (sting)",
+		"Improved Critical (tentacles)",
+		"Improved Initiative",
+		"Iron Will",
+		"Lightning Reflexes",
+		"Power Attack",
+		"Vital Strike"
+	],
+	"skills": {
+		"Bluff": 39,
+		"Diplomacy": 39,
+		"Heal": 32,
+		"Intimidate": 39,
+		"Knowledge (arcana)": 28,
+		"Knowledge (history)": 28,
+		"Knowledge (planes)": 31,
+		"Knowledge (religion)": 31,
+		"Perception": 39,
+		"Sense Motive": 39,
+		"Spellcraft": 31
+	},
+	"special_abilities": {
+		"Blood Link": "SU",
+		"Horrifying Bellow": "SU",
+		"Surrogate Senses": "SU",
+		"Unholy Gestation": "EX"
+	},
+	"languages": [
+		"Abyssal",
+		"Aklo",
+		"Common",
+		"Draconic",
+		"Kuru",
+		"Undercommon",
+		"Telepathy 100"
+	],
+	"enviroment": ["Any"],
+	"organisation": {
+		"Minimum": 1,
+		"Maximum": 1
+	}
+}

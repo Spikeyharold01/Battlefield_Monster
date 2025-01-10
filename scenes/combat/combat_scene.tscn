@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://4gy01wla7slo"]
+
+[ext_resource type="Script" path="res://scenes/combat/combat_scene.gd" id="1_q6nso"]
+
+[sub_resource type="Sky" id="Sky_yb6jx"]
+
+[sub_resource type="Environment" id="Environment_mmbi0"]
+sky = SubResource("Sky_yb6jx")
+sky_custom_fov = 19.6
+ambient_light_source = 3
+ambient_light_color = Color(0.804743, 0.804743, 0.804743, 1)
+adjustment_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xb1ju"]
+size = Vector2(100, 100)
+
+[node name="CombatScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00640869, 0)
+script = ExtResource("1_q6nso")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mmbi0")
+
+[node name="Battlefield" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101392, -0.407575, 0)
+mesh = SubResource("PlaneMesh_xb1ju")
+
+[node name="Monsters" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.57232, 0.813074, -0.106585, -0.0633639, 0.0857403, 0.994301, 0.817578, 0.575812, 0.00244859, 2.02526, 41.6014, -11.3279)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+current = true
+far = 200.0

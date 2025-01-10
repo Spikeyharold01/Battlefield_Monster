@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://br0fxfit4cg47"]
+
+[ext_resource type="Script" path="res://scripts/monsters/blood_queen.gd" id="1_3ty1t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f5ysc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8opsn"]
+
+[node name="BloodQueen" type="Node3D"]
+script = ExtResource("1_3ty1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_f5ysc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="PhysicsBody" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBody"]
+shape = SubResource("BoxShape3D_8opsn")

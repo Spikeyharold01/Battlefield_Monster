@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgourno0t4k7e"]
+
+[ext_resource type="Script" path="res://scripts/monsters/criosphinx.gd" id="1_nds6v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7bimv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rv1it"]
+
+[node name="Criosphinx" type="Node3D"]
+script = ExtResource("1_nds6v")
+monster_name = null
+cr = null
+xp = null
+present_xp = null
+required_xp = null
+race = null
+character_class = null
+lvl = null
+alignment = null
+creature_size = null
+creature_type = null
+init_mod = null
+normal_vision_range = null
+senses = null
+auras = null
+scent_strength = null
+ac_total = null
+ac_touch = null
+ac_flatfooted = null
+ac_modifiers = null
+hp = null
+hp_dice = null
+fort_save = null
+ref_save = null
+will_save = null
+defensive_abilities = null
+speed = null
+melee = null
+ranged = null
+creatures_space = null
+creatures_reach = null
+individual_attacks = null
+special_attacks = null
+strength = null
+dexterity = null
+constuition = null
+intelligence = null
+wisdom = null
+charisma = null
+base_atk = null
+cmb = null
+cmd = null
+special_qualities = null
+special_abilities = null
+initiative_abilities = null
+aura = null
+hp_abilities = null
+weakness_abilities = null
+spell_like_abilities = null
+spell_like_abilities_list = null
+immune = null
+languages = null
+archdevil_traits = null
+demonlord_traits = null
+empyreallord_traits = null
+formian_traits = null
+horseman_traits = null
+qlippothlord_traits = null
+perception_bonus = null
+spells = null
+feats = null
+skills = null
+enviroment = null
+organisation = null
+depth = null
+is_recruit = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+mesh = SubResource("CapsuleMesh_7bimv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="PhysicsBody" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBody"]
+shape = SubResource("CapsuleShape3D_rv1it")

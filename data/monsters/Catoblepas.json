@@ -1,0 +1,81 @@
+{
+	"monster_name": "Catoblepas",
+	"cr": 12,
+	"xp": 19200,
+	"race": "None",
+	"character_class": "None",
+	"lvl": 1,
+	"alignment": "Neutral",
+	"creature_size": "Large",
+	"creature_type": "Magical_Beast",
+	"init_mod": -1,
+	"senses": {
+		"darkvision": 60.0,
+		"low_light_vision": 0.0
+	},
+	"perception_bonus": 25,
+	"ac_total": 27,
+	"ac_touch": 8,
+	"ac_flatfooted": 27,
+	"ac_modifiers": {
+		"Dex": -1,
+		"Natural": 19,
+		"Size": -1
+	},
+	"hp": 161,
+	"hp_dice": "14d10+84",
+	"fort_save": 15,
+	"ref_save": 8,
+	"will_save": 8,
+	"speed": {
+		"Walk": 40.0,
+		"Swim": 20.0,
+	},
+	"melee": [
+		"1 Bite 18 (3d6+5)",
+		"1 gore 18 (2d8+5/19-20)"
+	],
+	"creatures_space": 15.0,
+	"creatures_reach": 15.0,
+	"special_attacks": [
+		"Poison Breath"
+	],
+	"spell_like_abilities": false,
+	"spell_like_abilities_list": [],
+	"spells": [],
+	"strength": 20,
+	"dexterity": 8,
+	"constuition": 22,
+	"intelligence": 5,
+	"wisdom": 15,
+	"charisma": 10,
+	"base_atk": 14,
+	"cmb": 20,
+	"cmd": 29,
+	"feats": [
+		"Diehard",
+		"Endurance",
+		"Improved Critical (gore)",
+		"Improved Iron Will",
+		"Iron Will",
+		"Multiattack",
+		"Skill Focus (Perception)"
+	],
+	"skills": {
+		"Perception": 25,
+		"Swim": 13
+	},
+	"special_abilities": {
+		"Poisonous Breath": "EX"
+	},
+	"languages": [
+		"Aklo"
+	],
+	"enviroment": [
+		"Swamp"
+	],
+	"organisation": {
+		"Minimum": 1,
+		"Maximum": 6
+	}
+}

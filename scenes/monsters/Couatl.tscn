@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca3xa6487mjwb"]
+
+[ext_resource type="Script" path="res://scripts/monsters/couatl.gd" id="1_xuy5c"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7bdin"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6iyjg"]
+
+[node name="Couatl" type="Node3D"]
+script = ExtResource("1_xuy5c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_7bdin")
+
+[node name="PhysicsBody" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBody"]
+shape = SubResource("BoxShape3D_6iyjg")

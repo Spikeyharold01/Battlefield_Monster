@@ -1,0 +1,84 @@
+{
+	"monster_name": "Criosphinx",
+	"cr": 7,
+	"xp": 3200,
+	"race": "None",
+	"character_class": "None",
+	"lvl": 1,
+	"alignment": "Neutral",
+	"creature_size": "Large",
+	"creature_type": "Magical_Beast",
+	"init_mod": 0,
+	"senses": {
+		"darkvision": 60,
+		"low_light_vision": 0
+	},
+	"languages": [
+		"Common",
+		"Sphinx"
+	],
+	"ac_total": 20,
+	"ac_touch": 9,
+	"ac_flatfooted": 20,
+	"ac_modifiers": {
+		"Natural": 11,
+		"Size": -1
+	},
+	"hp": 85,
+	"hp_dice": "10d10+30",
+	"fort_save": 10,
+	"ref_save": 7,
+	"will_save": 4,
+	"speed": {
+		"Walk": 30,
+		"Fly": 60
+	},
+	"melee": [
+		"2 Claws 15 (1d6+6)",
+		"1 Gore 15 (2d4+6/19-20)"
+	],
+	"creatures_space": 10,
+	"creatures_reach": 5,
+	"special_attacks": [
+		"Swooping Charge"
+	],
+	"spell_like_abilities": true,
+	"spell_like_abilities_list": [
+		"C,Speak with animals,10,10"
+	],
+	"spells": [],
+	"strength": 23,
+	"dexterity": 10,
+	"constuition": 17,
+	"intelligence": 12,
+	"wisdom": 12,
+	"charisma": 11,
+	"base_atk": 10,
+	"cmb": 17,
+	"cmd": 27,
+	"perception_bonus": 10,
+	"feats": [
+		"Improved Bull Rush",
+		"Improved Critical (gore)",
+		"Power Attack",
+		"Skill Focus (Intimidate)",
+		"Weapon Focus (gore)"
+	],
+	"skills": {
+		"Bluff": 10,
+		"Fly": 1,
+		"Intimidate": 16,
+		"Perception": 10
+	},
+	"special_abilities": {
+		"Swooping Charge": "EX"
+	},
+	"enviroment": [
+		"Warm deserts",
+		"Warm hills"
+	],
+	"organisation": {
+		"Minimum": 1,
+		"Maximum": 1
+	}
+}

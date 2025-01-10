@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://br0jv387w3tfu"]
+
+[ext_resource type="Script" path="res://scripts/monsters/taer.gd" id="1_ccqmh"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4iuh3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flbl4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ena67"]
+
+[node name="Taer" type="Node3D"]
+script = ExtResource("1_ccqmh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_4iuh3")
+surface_material_override/0 = SubResource("StandardMaterial3D_flbl4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="PhysicsBody" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBody"]
+shape = SubResource("CylinderShape3D_ena67")
