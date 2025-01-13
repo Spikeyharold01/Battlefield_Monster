@@ -1,15 +1,29 @@
 extends Node
 
 class_name CombatManager
-
+var ui
 var turn_order: Array = []  # Stores combatants in initiative order
 var current_turn_index: int = 0
 var combatants: Array = []  # Stores all combatants (player and enemy monsters)
 var player_team: Array = []  # Stores the player's monsters
 var enemy_team: Array = []   # Stores the enemy monsters
 
+
+func set_ui(ui_node):
+	ui = ui_node
+# Function to show/hide UI based on turn
+func update_ui_for_turn(current_combatant,players_team):
+	if current_combatant in player_team:
+		ui.show_ui()  # Show the UI for the player
+	else:
+		ui.hide_ui()  # Hide the UI for the enemy
+		
 func start_combat(player_team: Array, enemy_team: Array):
 	# Combine player and enemy teams into a single array
+	self.player_team = player_team
+	self.enemy_team = enemy_team
+	print("Player Team:", player_team)
+	print("Enemy Team:", enemy_team)
 	combatants = player_team + enemy_team
 	
 	# Roll initiative for each combatant
@@ -53,12 +67,14 @@ func sort_combatants_by_initiative():
 func start_turn():
 	var current_combatant = turn_order[current_turn_index]
 	print("It's " + current_combatant.monster_name + "'s turn!")
-	
+	print("Player Team:", player_team)
+	print("Enemy Team:", enemy_team)
 	# Handle flat-footed status
 	if current_combatant.is_flat_footed:
 		current_combatant.is_flat_footed = false
 		print(current_combatant.monster_name + " is no longer flat-footed!")
-	
+	# Update the UI based on whose turn it is
+	update_ui_for_turn(current_combatant,player_team)
 	# Handle the combatant's turn
 	if current_combatant in player_team:
 		handle_player_turn(current_combatant)

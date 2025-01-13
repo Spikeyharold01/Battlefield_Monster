@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4gy01wla7slo"]
+[gd_scene load_steps=6 format=3 uid="uid://4gy01wla7slo"]
 
 [ext_resource type="Script" path="res://scenes/combat/combat_scene.gd" id="1_q6nso"]
+[ext_resource type="Script" path="res://scripts/ui/UIManager.gd" id="2_ddckj"]
 
 [sub_resource type="Sky" id="Sky_yb6jx"]
 
@@ -14,7 +15,7 @@ adjustment_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_xb1ju"]
 size = Vector2(100, 100)
 
-[node name="CombatScene" type="Node3D"]
+[node name="Combat_Scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00640869, 0)
 script = ExtResource("1_q6nso")
 
@@ -34,3 +35,66 @@ transform = Transform3D(-0.57232, 0.813074, -0.106585, -0.0633639, 0.0857403, 0.
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
 current = true
 far = 200.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 15.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ddckj")
+
+[node name="PrimaryButtonsContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 404.0
+offset_bottom = 568.0
+theme_override_constants/separation = 20
+
+[node name="CombatManueversButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 14
+text = "Combat Maneuvers"
+
+[node name="FullRoundActionButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Full Round Action"
+
+[node name="MoveActionButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Move Action"
+
+[node name="StandardActionButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Standard Action"
+
+[node name="FreeActionButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Free Action"
+
+[node name="FiveFootStepButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "5 Foot Step"
+
+[node name="AttackOfOppurtunityButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Attack of Oppurtunity"
+
+[node name="SwiftActionButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Swift Action"

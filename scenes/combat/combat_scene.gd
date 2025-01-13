@@ -3,7 +3,8 @@ extends Node3D
 var player_team: Array = []  # Stores the player's monsters
 var enemy_team: Array = []   # Stores the enemy monsters
 var combat_manager: CombatManager
-
+# UI Reference
+@onready var ui = $UI  # Ensure the UI node is a child of combat_scene
 
 func initialize(player_team: Array, enemy_team: Array):
 	self.player_team = player_team
@@ -17,7 +18,8 @@ func initialize(player_team: Array, enemy_team: Array):
 	# Load and instantiate CombatManager
 	var combat_manager_script = load("res://scripts/combat/CombatManager.gd")
 	combat_manager = combat_manager_script.new()
-	
+	 # Pass the UI reference to the CombatManager
+	combat_manager.set_ui(ui)
 	# Start combat
 	combat_manager.start_combat(player_team, enemy_team)
 
