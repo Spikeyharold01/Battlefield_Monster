@@ -200,7 +200,18 @@ var active_auras = {}  # Dictionary to track active auras and their timers
 @export var is_recruit: bool = false
 @export var initiative: int =0
 @export var is_flat_footed: bool = false
+# Reference to the 3D object in the scene
+var scene_instance: Node3D
+@export var scene_path: String  # Path to the monster's scene file
+# Custom position property (not redefining Node3D's position)
+var combat_position: Vector3
 
+func load_scene():
+	if scene_path:
+		var scene = load(scene_path)
+		if scene:
+			scene_instance = scene.instantiate()
+	return scene_instance
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

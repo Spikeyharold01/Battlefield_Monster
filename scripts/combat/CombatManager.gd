@@ -1,107 +1,144 @@
 extends Node
-
 class_name CombatManager
-var ui
-var turn_order: Array = []  # Stores combatants in initiative order
-var current_turn_index: int = 0
-var combatants: Array = []  # Stores all combatants (player and enemy monsters)
-var player_team: Array = []  # Stores the player's monsters
-var enemy_team: Array = []   # Stores the enemy monsters
 
+# References to the UI and combatants
+var ui
+var combat_scene: Node3D  # Reference to the 3D scene
+var turn_order: Array = []
+var current_turn_index: int = 0
+var combatants: Array = []
+var player_team: Array = []
+var enemy_team: Array = []
 
 func set_ui(ui_node):
 	ui = ui_node
-# Function to show/hide UI based on turn
-func update_ui_for_turn(current_combatant,players_team):
-	if current_combatant in player_team:
-		ui.show_ui()  # Show the UI for the player
-	else:
-		ui.hide_ui()  # Hide the UI for the enemy
-		
+
+func set_combat_scene(scene: Node3D):
+	combat_scene = scene
+
 func start_combat(player_team: Array, enemy_team: Array):
-	# Combine player and enemy teams into a single array
 	self.player_team = player_team
 	self.enemy_team = enemy_team
-	print("Player Team:", player_team)
-	print("Enemy Team:", enemy_team)
 	combatants = player_team + enemy_team
-	
-	# Roll initiative for each combatant
+
+	# Position player team on one side of the battlefield
+	for i in range(player_team.size()):
+		player_team[i].combat_position = Vector3(i * 2, 0, 0)
+		var scene_instance = player_team[i].load_scene()
+		if scene_instance:
+			scene_instance.position = player_team[i].combat_position
+			combat_scene.add_child(scene_instance)
+
+	# Position enemy team on the other side
+	for i in range(enemy_team.size()):
+		enemy_team[i].combat_position = Vector3(i * 2, 0, 10)
+		var scene_instance = enemy_team[i].load_scene()
+		if scene_instance:
+			scene_instance.position = enemy_team[i].combat_position
+			combat_scene.add_child(scene_instance)
+
+	# Roll initiative and sort combatants
 	for combatant in combatants:
 		combatant.initiative = roll_initiative(combatant)
-		combatant.is_flat_footed = true  # All combatants start flat-footed
-	
-	# Sort combatants by initiative
+		combatant.is_flat_footed = true
+
 	sort_combatants_by_initiative()
-	
-	# Start the first turn
 	start_turn()
 
 func roll_initiative(combatant: Monster) -> int:
-	# Roll a d20 and add Dexterity modifier
 	return roll_dice(1, 20, combatant.init_mod)
 
 func roll_dice(num_dice: int, num_sides: int, modifier: int) -> int:
 	var total = 0
 	for i in range(num_dice):
-		total += randi() % num_sides + 1  # Roll a die and add to the total
+		total += randi() % num_sides + 1
 	return total + modifier
 
 func sort_combatants_by_initiative():
-	# Sort combatants by initiative (highest first)
 	combatants.sort_custom(func(a, b): 
 		if a.initiative == b.initiative:
-			# If initiative is tied, sort by Dexterity modifier (highest first)
-			if a.init_mod== b.init_mod:
-				# If Dexterity modifier is tied, roll to break the tie
+			if a.init_mod == b.init_mod:
 				return randf() < 0.5
 			else:
 				return a.init_mod > b.init_mod
 		else:
 			return a.initiative > b.initiative
 	)
-	
-	# Update turn order
 	turn_order = combatants
 
 func start_turn():
 	var current_combatant = turn_order[current_turn_index]
 	print("It's " + current_combatant.monster_name + "'s turn!")
-	print("Player Team:", player_team)
-	print("Enemy Team:", enemy_team)
-	# Handle flat-footed status
-	if current_combatant.is_flat_footed:
-		current_combatant.is_flat_footed = false
-		print(current_combatant.monster_name + " is no longer flat-footed!")
-	# Update the UI based on whose turn it is
-	update_ui_for_turn(current_combatant,player_team)
-	# Handle the combatant's turn
+	update_ui_for_turn(current_combatant, player_team)
 	if current_combatant in player_team:
 		handle_player_turn(current_combatant)
 	else:
 		handle_ai_turn(current_combatant)
 
 func handle_player_turn(combatant: Monster):
-	# Wait for player input (e.g., attack, use ability)
 	print("Waiting for player input...")
 
 func handle_ai_turn(combatant: Monster):
-	# AI logic (e.g., choose a target and attack)
 	print("AI is taking its turn...")
 	end_turn()
 
 func end_turn():
-	# Move to the next combatant in the turn order
 	current_turn_index = (current_turn_index + 1) % turn_order.size()
-	
-	# Start the next turn
-	start_turn()
+	if player_team.is_empty() or enemy_team.is_empty():
+		end_combat()
+	else:
+		start_turn()
 
 func end_combat():
-	# Check for victory/defeat
 	if player_team.is_empty():
 		print("Player defeated!")
 	elif enemy_team.is_empty():
 		print("Player victorious!")
 	else:
 		print("Combat ended in a draw.")
+
+func update_ui_for_turn(current_combatant, players_team):
+	if current_combatant in player_team:
+		ui.show_ui()
+		var actions = get_available_actions(current_combatant)
+		ui.update_buttons(actions)  # Enable/disable buttons based on actions
+	else:
+		ui.hide_ui()
+
+func get_available_actions(combatant: Monster) -> Array:
+	var actions = []
+
+	# Check for basic attack
+	if has_line_of_sight(combatant, get_nearest_enemy(combatant)):
+		actions.append("attack")
+
+	# Check for spells or special abilities
+	for skill in combatant.skills:
+		if skill == "Fireball" and has_line_of_sight(combatant, get_nearest_enemy(combatant)):
+			actions.append("cast_fireball")
+
+	# Add movement if not flat-footed
+	if not combatant.is_flat_footed:
+		actions.append("move")
+
+	return actions
+
+func has_line_of_sight(combatant: Monster, target: Monster) -> bool:
+	if combat_scene:
+		var space_state = combat_scene.get_world_3d().direct_space_state
+		var ray_params = PhysicsRayQueryParameters3D.new()
+		ray_params.from = combatant.combat_position
+		ray_params.to = target.combat_position
+		var result = space_state.intersect_ray(ray_params)
+		return result.is_empty()  # No obstacles in the way
+	return false  # Default to false if combat_scene is not set
+
+func get_nearest_enemy(combatant: Monster) -> Monster:
+	var nearest_enemy = null
+	var min_distance = INF
+	for enemy in enemy_team if combatant in player_team else player_team:
+		var distance = combatant.combat_position.distance_to(enemy.combat_position)
+		if distance < min_distance:
+			min_distance = distance
+			nearest_enemy = enemy
+	return nearest_enemy

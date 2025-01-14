@@ -109,5 +109,6 @@
 		"Minimum": 1,
 		"Maximum": 6
 	},
-	"depth": 0
+	"depth": 0,
+	"scene_path": "res://scenes/monsters/Couatl.tscn"
 }

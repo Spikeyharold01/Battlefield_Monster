@@ -119,7 +119,7 @@ func load_monster(json_path: String, monster: Monster) -> Monster:
 			monster.depth = monster_data.get("depth", 0)
 			
 			#is recruit, initiaive and is_flat_footed will always be default
-			
+			monster.scene_path=monster_data.get("scene_path","")
 
 			
 			monster.initialize_required_xp()

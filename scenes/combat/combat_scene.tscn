@@ -89,7 +89,7 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "5 Foot Step"
 
-[node name="AttackOfOppurtunityButton" type="Button" parent="UI/PrimaryButtonsContainer"]
+[node name="AttackOppurtunityButton" type="Button" parent="UI/PrimaryButtonsContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Attack of Oppurtunity"

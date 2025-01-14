@@ -80,5 +80,6 @@
 	"organisation": {
 		"Minimum": 1,
 		"Maximum": 1
-	}
+	},
+	"scene_path": "res://scenes/monsters/Criosphinx.tscn"
 }

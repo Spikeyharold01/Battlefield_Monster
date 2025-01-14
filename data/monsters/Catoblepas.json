@@ -77,5 +77,6 @@
 	"organisation": {
 		"Minimum": 1,
 		"Maximum": 6
-	}
+	},
+	"scene_path": "res://scenes/monsters/Catoblepas.tscn"
 }
